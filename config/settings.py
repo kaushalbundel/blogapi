@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+import rest_framework
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +43,8 @@ INSTALLED_APPS = [
     "posts.apps.PostsConfig",
     # third party apps
     "rest_framework",
+    "rest_framework.authtoken",
+    "dj_rest_auth",
 ]
 
 MIDDLEWARE = [
@@ -129,5 +133,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        'rest_framework.authentication.SessionAuthentication', # to power the Browsable API and enable login and logout
+        'rest_framework.authentication.TokenAuthentication', # To generate tokens
     ]
 }
