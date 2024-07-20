@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "dj_rest_auth.registration",
 ]
 
-Middleware = [
+MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -59,8 +59,10 @@ Middleware = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
 ]
+
 
 ROOT_URLCONF = "config.urls"
 
@@ -145,5 +147,5 @@ REST_FRAMEWORK = {
     ],
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 SITE_ID = 1
